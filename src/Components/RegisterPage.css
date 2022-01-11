@@ -1,0 +1,114 @@
+.registerContainer {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  font-family: "Road Rage";
+}
+
+.CreateDiaryAccSection {
+  display: flex;
+  flex-direction: column;
+  flex: 0.6;
+  justify-content: center;
+  padding-left: 85px;
+  background-color: #d14d04;
+  border-top-right-radius: 45%1000px;
+  border-bottom-right-radius: 45%1000px;
+  text-transform: capitalize;
+  color: #fff;
+}
+.CreateDiaryAccSection h1 {
+  font-size: 110px;
+}
+
+.CreateDiaryAccSection p {
+  font-size: 70px;
+}
+.registrationSection {
+  flex: 0.4;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 15px;
+  text-transform: capitalize;
+}
+.intro {
+  color: #8c8f94;
+}
+
+.intro h1 {
+  font-size: 50px;
+}
+
+.intro p {
+  margin: 5px 0;
+  font-size: 23px;
+}
+
+.form {
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.form input {
+  padding: 12px 7px;
+  outline: none;
+  border: 2px solid #8c8f94;
+  border-radius: 5px;
+  font-family: "Road Rage";
+  font-size: 20px;
+}
+
+.form input:focus {
+  border-color: #d14d04;
+}
+
+.form button {
+  border: none;
+  outline: none;
+  padding: 11px 0;
+  background: #d14d04;
+  color: #fff;
+  font-size: 18px;
+  box-shadow: 0 7px 15px rgba(22, 5, 107, 0.3);
+  font-family: "Road Rage";
+  font-size: 25px;
+  text-transform: capitalize;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.4s;
+}
+
+.form button:hover,.form button:focus {
+  background: #b84406;
+  box-sizing: inset 0 0 0 2em var(--hover);
+}
+
+.intro a {
+  text-decoration: none;
+  color: #d14d04;
+}
+
+@media screen and (max-width: 768px) {
+  .registerContainer {
+    flex-direction: column;
+  }
+  .CreateDiaryAccSection {
+    border-top-right-radius: 0;
+    padding-left: 0;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .CreateDiaryAccSection h1 {
+    font-size: 80px;
+  }
+
+  .CreateDiaryAccSection p {
+    font-size: 40px;
+  }
+}

@@ -1,0 +1,30 @@
+.note-section-mobile-container {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .note-section-mobile-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+  }
+
+  .back-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-family: "Road Rage";
+    font-size: 20px;
+    background: transparent;
+    color: #d14d04;;
+    cursor: pointer;
+  }
+  .back-btn:hover{
+    background: #d14d04;
+    color: white;
+  }
+  .back-btn:active {
+    background: #000;
+  }
+}

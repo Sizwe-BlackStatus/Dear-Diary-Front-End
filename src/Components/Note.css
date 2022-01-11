@@ -1,0 +1,68 @@
+.note-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+.note-box {
+    margin: 0 auto;
+    width: 83%;
+    height: 100%;
+    box-shadow: 0 1px 4px #000;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    padding: 3px 14px;
+    font-family: 'Road Rage';
+}
+
+.note-box p {
+    width: 85%;
+    font-size: 22px;
+}
+
+.note-box:nth-child(odd){
+    background-color: #cccbcb;
+}
+
+.note-box:nth-child(even){
+    background-color: #eee;
+}
+
+.note-title {
+    margin-bottom: 4px;
+}
+
+.update-delete {
+    color: white;
+    position: relative;
+    left: 85%;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.delete-note {
+    margin-left: 10px;
+}
+
+.delete-note:hover {
+    color: red;
+    transform: scale(1.2);
+}
+
+.edit-note:hover {
+    color: #d14d04;
+    transform: scale(1.2);
+}
+
+@media screen and (max-width: 768px) {
+    .update-delete {
+        left: 91%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .update-delete {
+        left: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}

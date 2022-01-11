@@ -1,0 +1,170 @@
+.container {
+  display: flex;
+}
+.container-none {
+  display: flex;
+}
+.all-dear-diary-notes-section {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  background: #d14d04;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-family: "Road Rage";
+}
+
+.hamburger-menu {
+  flex: 0.2 1;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.all-notes {
+  flex: 0.7 1;
+  text-transform: capitalize;
+}
+
+.notes-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-box {
+  display: flex;
+  background: #ffffff;
+  margin: 0 auto;
+  width: 83%;
+  padding: 8px;
+  border-radius: 2px;
+}
+
+.search-icon {
+  flex: 0.11;
+  color: #8c8f94;
+  font-size: 14px;
+}
+
+.search {
+  flex: 0.89 1;
+  border: none;
+  text-transform: capitalize;
+  padding-left: 5px;
+  width: 100%;
+}
+
+.new-note-container {
+  display: none;
+}
+
+.dear-diary-note-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-title {
+  height: 60px;
+  border: none;
+  padding-left: 15px;
+  font-size: 35px;
+  font-family: "Road Rage";
+  outline: none;
+}
+
+.content {
+  height: 60vh;
+  border: none;
+  border-radius: 3px;
+  font-family: "Road Rage";
+  font-size: 35px;
+  outline: none;
+  margin: 0 auto;
+  width: 90%;
+  color: #000;
+  padding: 15px;
+  background: #eee;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.add-note {
+  position: relative;
+  font-size: 35px;
+  top: -35px;
+  left: 5%;
+  color: #d14d04;
+  cursor: pointer;
+}
+
+.add-note:active {
+  color: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: block;
+  }
+  .container-none {
+    display: none;
+  }
+  .all-dear-diary-notes-section {
+    width: 100%;
+  }
+
+  .dear-diary-note-section {
+    display: none;
+  }
+  .new-note-container {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+  }
+  .new-note-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-family: "Road Rage";
+    font-size: 20px;
+    background: transparent;
+    color: #ffff;
+    cursor: pointer;
+  }
+  .new-note-btn:hover {
+    background: #fff;
+    color: #d14d04;
+  }
+  .new-note-btn:active {
+    background-color: #000;
+  }
+  .add-note {
+    position: relative;
+    font-size: 35px;
+    top: -41px;
+    left: 5%;
+    color: #d14d04;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .new-note-container {
+    right: 10%;
+  }
+}
