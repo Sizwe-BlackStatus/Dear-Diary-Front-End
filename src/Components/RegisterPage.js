@@ -13,7 +13,7 @@ function RegisterPage() {
   function registration() {
     if (!!usernameReg && !!emailReg && !!passwordReg) {
       axios
-        .post("http://localhost:3001/auth", {
+        .post("https://dear-diary-backend-blackstatus.herokuapp.com/auth", {
           username: usernameReg,
           email: emailReg,
           password: passwordReg,

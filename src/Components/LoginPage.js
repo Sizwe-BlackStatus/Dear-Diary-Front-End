@@ -9,7 +9,7 @@ function LoginPage() {
 
   const login = () => {
     axios
-      .post("http://localhost:3001/auth/login", {
+      .post("https://dear-diary-backend-blackstatus.herokuapp.com/auth/login", {
         username: userLogIn,
         password: passwordLogIn,
       })
