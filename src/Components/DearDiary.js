@@ -84,7 +84,7 @@ function DearDiary() {
           setNoteTitle("");
         }
       });
-    window.location.reload();
+    // window.location.reload();
   }
 
   const editNote = (id) => {
@@ -122,7 +122,7 @@ function DearDiary() {
           })
         );
       });
-    window.location.reload();
+    // window.location.reload();
   };
 
   const removeNote = (id) => {
