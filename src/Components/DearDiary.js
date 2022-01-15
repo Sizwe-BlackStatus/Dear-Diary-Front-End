@@ -51,9 +51,12 @@ function DearDiary() {
         setUserId(response.data.id);
       });
     axios
-      .get(`https://dear-diary-backend-blackstatus.herokuapp.com/notes/${userId}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .get(
+        `https://dear-diary-backend-blackstatus.herokuapp.com/notes/${userId}`,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then((response) => {
         setNotes(response.data);
       });
@@ -84,19 +87,34 @@ function DearDiary() {
           setNoteTitle("");
         }
       });
-    // window.location.reload();
   }
 
   const editNote = (id) => {
     axios
-      .get(`https://dear-diary-backend-blackstatus.herokuapp.com/notes/edit/${id}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .get(
+        `https://dear-diary-backend-blackstatus.herokuapp.com/notes/edit/${id}`,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then((response) => {
-        setCurrentId(id);
-        setCurrentTitle(response.data.title);
-        setCurrentContent(response.data.content);
-        setIsEditing(true);
+        if (
+          response.data.title === undefined ||
+          response.data.content === undefined
+        ) {
+          let lastNote = notes[notes.length - 1];
+          let secondLastNote = notes[notes.length - 2]
+          lastNote.id = secondLastNote.id + 10
+          setCurrentId(lastNote.id)
+          setCurrentTitle(lastNote.title);
+          setCurrentContent(lastNote.content);
+          setIsEditing(true);
+        } else {
+          setCurrentId(id);
+          setCurrentTitle(response.data.title);
+          setCurrentContent(response.data.content);
+          setIsEditing(true);
+        }
       });
   };
 
@@ -115,21 +133,24 @@ function DearDiary() {
             return note.id === currentId
               ? {
                   id: note.id,
-                  title: note.currentTitle,
-                  content: note.currentTitle,
+                  title: currentTitle,
+                  content: currentContent,
                 }
               : note;
           })
         );
       });
-    // window.location.reload();
+    setIsEditing(false);
   };
 
   const removeNote = (id) => {
     axios
-      .delete(`https://dear-diary-backend-blackstatus.herokuapp.com/notes/${id}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .delete(
+        `https://dear-diary-backend-blackstatus.herokuapp.com/notes/${id}`,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then(() => {
         setNotes(
           notes.filter((note) => {
@@ -178,13 +199,13 @@ function DearDiary() {
               />
             </div>
           </div>
-            <Note
-              notes={notes}
-              editNote={editNote}
-              handleDisplay={handleDisplay}
-              removeNote={removeNote}
-              searchNotes={searchNotes}
-            />
+          <Note
+            notes={notes}
+            editNote={editNote}
+            handleDisplay={handleDisplay}
+            removeNote={removeNote}
+            searchNotes={searchNotes}
+          />
         </div>
         {isEditing ? (
           <div className="dear-diary-note-section">
@@ -220,6 +241,8 @@ function DearDiary() {
               onChange={(e) => {
                 setNoteTitle(e.target.value);
               }}
+              type="text"
+              value={noteTitle}
             />
             <textarea
               name="content"
@@ -227,6 +250,8 @@ function DearDiary() {
               placeholder="What's on your mind..."
               rows="6"
               onChange={(e) => setNoteContent(e.target.value)}
+              type="text"
+              value={noteContent}
             />
             <FontAwesomeIcon
               className="add-note"

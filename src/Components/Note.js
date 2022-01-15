@@ -3,13 +3,19 @@ import "./Note.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/fontawesome-free-solid";
 
-function Note({ notes, removeNote, editNote, handleDisplay, searchNotes }) {
+function Note({
+  notes,
+  removeNote,
+  editNote,
+  handleDisplay,
+  searchNotes,
+}) {
   return (
     <div className="note-container">
       {searchNotes.length !== 0
-        ? searchNotes.map((note) => {
+        ? searchNotes.map((note, id) => {
             return (
-              <div className="note-box">
+              <div key={id} className="note-box">
                 <h1 className="note-title">{note.title}</h1>
                 <p className="note-content">{note.content}</p>
                 <div className="update-delete">
@@ -30,9 +36,9 @@ function Note({ notes, removeNote, editNote, handleDisplay, searchNotes }) {
               </div>
             );
           })
-        : notes.map((note) => {
+        : notes.map((note, id) => {
             return (
-              <div className="note-box">
+              <div key={id} className="note-box">
                 <h1 className="note-title">{note.title}</h1>
                 <p className="note-content">{note.content}</p>
                 <div className="update-delete">

@@ -106,10 +106,13 @@
 .add-note {
   position: relative;
   font-size: 35px;
-  top: -35px;
-  left: 5%;
+  top: -40px;
+  left: 5.5%;
   color: #d14d04;
   cursor: pointer;
+  width: 45px;
+  border: none;
+  background: transparent;
 }
 
 .add-note:active {
