@@ -44,16 +44,15 @@ function DearDiary() {
 
   useEffect(() => {
     axios
-      .get(`https://deary-diary-backend.heroku.app.com/auth/user`, {
+      .get(`https://deary-diary-backend.herokuapp.com/auth/user`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {
         setUserId(response.data.id);
-        console.log(response.data)
       });
     axios
       .get(
-        `https://deary-diary-backend.heroku.app.com/notes/${userId}`,
+        `https://deary-diary-backend.herokuapp.com/notes/${userId}`,
         {
           headers: { accessToken: localStorage.getItem("accessToken") },
         }
@@ -66,7 +65,7 @@ function DearDiary() {
   function newNote() {
     axios
       .post(
-        "https://deary-diary-backend.heroku.app.com/notes",
+        "https://deary-diary-backend.herokuapp.com/notes",
         {
           userId: id,
           title: noteTitle,
@@ -94,7 +93,7 @@ function DearDiary() {
   const editNote = (id) => {
     axios
       .get(
-        `https://deary-diary-backend.heroku.app.com/notes/edit/${id}`,
+        `https://deary-diary-backend.herokuapp.com/notes/edit/${id}`,
         {
           headers: { accessToken: localStorage.getItem("accessToken") },
         }
@@ -123,7 +122,7 @@ function DearDiary() {
   const updateNote = () => {
     axios
       .put(
-        `https://deary-diary-backend.heroku.app.com/notes/editNote`,
+        `https://deary-diary-backend.herokuapp.com/notes/editNote`,
         { id: currentId, title: currentTitle, content: currentContent },
         {
           headers: { accessToken: localStorage.getItem("accessToken") },
@@ -148,7 +147,7 @@ function DearDiary() {
   const removeNote = (id) => {
     axios
       .delete(
-        `https://deary-diary-backend.heroku.app.com/notes/${id}`,
+        `https://deary-diary-backend.herokuapp.com/notes/${id}`,
         {
           headers: { accessToken: localStorage.getItem("accessToken") },
         }

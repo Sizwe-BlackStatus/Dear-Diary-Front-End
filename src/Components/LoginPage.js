@@ -9,7 +9,7 @@ function LoginPage() {
 
   const login = () => {
     axios
-      .post("https://deary-diary-backend.heroku.app.com/auth/login", {
+      .post("https://deary-diary-backend.herokuapp.com/auth/login", {
         username: userLogIn,
         password: passwordLogIn,
       })
