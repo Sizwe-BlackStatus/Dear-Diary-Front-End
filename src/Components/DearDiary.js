@@ -44,15 +44,16 @@ function DearDiary() {
 
   useEffect(() => {
     axios
-      .get(`https://dear-diary-backend-blackstatus.herokuapp.com/auth/user`, {
+      .get(`https://deary-diary-backend.heroku.app.com/auth/user`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {
         setUserId(response.data.id);
+        console.log(response.data)
       });
     axios
       .get(
-        `https://dear-diary-backend-blackstatus.herokuapp.com/notes/${userId}`,
+        `https://deary-diary-backend.heroku.app.com/notes/${userId}`,
         {
           headers: { accessToken: localStorage.getItem("accessToken") },
         }
@@ -65,7 +66,7 @@ function DearDiary() {
   function newNote() {
     axios
       .post(
-        "https://dear-diary-backend-blackstatus.herokuapp.com/notes",
+        "https://deary-diary-backend.heroku.app.com/notes",
         {
           userId: id,
           title: noteTitle,
@@ -87,12 +88,13 @@ function DearDiary() {
           setNoteTitle("");
         }
       });
+      
   }
 
   const editNote = (id) => {
     axios
       .get(
-        `https://dear-diary-backend-blackstatus.herokuapp.com/notes/edit/${id}`,
+        `https://deary-diary-backend.heroku.app.com/notes/edit/${id}`,
         {
           headers: { accessToken: localStorage.getItem("accessToken") },
         }
@@ -121,7 +123,7 @@ function DearDiary() {
   const updateNote = () => {
     axios
       .put(
-        `https://dear-diary-backend-blackstatus.herokuapp.com/notes/editNote`,
+        `https://deary-diary-backend.heroku.app.com/notes/editNote`,
         { id: currentId, title: currentTitle, content: currentContent },
         {
           headers: { accessToken: localStorage.getItem("accessToken") },
@@ -146,7 +148,7 @@ function DearDiary() {
   const removeNote = (id) => {
     axios
       .delete(
-        `https://dear-diary-backend-blackstatus.herokuapp.com/notes/${id}`,
+        `https://deary-diary-backend.heroku.app.com/notes/${id}`,
         {
           headers: { accessToken: localStorage.getItem("accessToken") },
         }
