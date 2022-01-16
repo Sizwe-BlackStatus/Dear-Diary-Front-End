@@ -85,6 +85,7 @@ function DearDiary() {
           setNotes([...notes, addedNote]);
           setNoteContent("");
           setNoteTitle("");
+          window.location.reload()
         }
       });
       
@@ -99,23 +100,10 @@ function DearDiary() {
         }
       )
       .then((response) => {
-        if (
-          response.data.title === undefined ||
-          response.data.content === undefined
-        ) {
-          let lastNote = notes[notes.length - 1];
-          let secondLastNote = notes[notes.length - 2]
-          lastNote.id = secondLastNote.id + 10
-          setCurrentId(lastNote.id)
-          setCurrentTitle(lastNote.title);
-          setCurrentContent(lastNote.content);
-          setIsEditing(true);
-        } else {
           setCurrentId(id);
           setCurrentTitle(response.data.title);
           setCurrentContent(response.data.content);
           setIsEditing(true);
-        }
       });
   };
 
