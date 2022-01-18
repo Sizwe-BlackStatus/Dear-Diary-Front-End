@@ -98,8 +98,8 @@ function DearDiary() {
         ) {
           let lastNote = notes[notes.length - 1];
           let secondLastNote = notes[notes.length - 2];
-          if (lastNote.id === undefined) {
-            window.location.reload();
+          if (secondLastNote === undefined) {
+            window.location.reload()
           } else {
             lastNote.id = secondLastNote.id + 10;
             setCurrentId(lastNote.id);
