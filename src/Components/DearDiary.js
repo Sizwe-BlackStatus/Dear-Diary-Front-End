@@ -51,12 +51,9 @@ function DearDiary() {
         setUserId(response.data.id);
       });
     axios
-      .get(
-        `https://deary-diary-backend.herokuapp.com/notes/${userId}`,
-        {
-          headers: { accessToken: localStorage.getItem("accessToken") },
-        }
-      )
+      .get(`https://deary-diary-backend.herokuapp.com/notes/${userId}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
       .then((response) => {
         setNotes(response.data);
       });
@@ -85,25 +82,37 @@ function DearDiary() {
           setNotes([...notes, addedNote]);
           setNoteContent("");
           setNoteTitle("");
-          window.location.reload()
         }
       });
-      
   }
 
   const editNote = (id) => {
     axios
-      .get(
-        `https://deary-diary-backend.herokuapp.com/notes/edit/${id}`,
-        {
-          headers: { accessToken: localStorage.getItem("accessToken") },
-        }
-      )
+      .get(`https://deary-diary-backend.herokuapp.com/notes/edit/${id}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
       .then((response) => {
+        if (
+          response.data.title === undefined ||
+          response.data.content === undefined
+        ) {
+          let lastNote = notes[notes.length - 1];
+          let secondLastNote = notes[notes.length - 2];
+          if (lastNote.id === undefined) {
+            window.location.reload();
+          } else {
+            lastNote.id = secondLastNote.id + 10;
+            setCurrentId(lastNote.id);
+            setCurrentTitle(lastNote.title);
+            setCurrentContent(lastNote.content);
+            setIsEditing(true);
+          }
+        } else {
           setCurrentId(id);
           setCurrentTitle(response.data.title);
           setCurrentContent(response.data.content);
           setIsEditing(true);
+        }
       });
   };
 
@@ -134,12 +143,9 @@ function DearDiary() {
 
   const removeNote = (id) => {
     axios
-      .delete(
-        `https://deary-diary-backend.herokuapp.com/notes/${id}`,
-        {
-          headers: { accessToken: localStorage.getItem("accessToken") },
-        }
-      )
+      .delete(`https://deary-diary-backend.herokuapp.com/notes/${id}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
       .then(() => {
         setNotes(
           notes.filter((note) => {
