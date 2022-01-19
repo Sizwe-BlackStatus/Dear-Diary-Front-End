@@ -6,6 +6,7 @@ function LoginPage() {
   const [userLogIn, setUserLogIn] = useState("");
   const [passwordLogIn, setPasswordLogIn] = useState("");
   let navigate = useNavigate();
+  let token = localStorage.getItem("accessToken");
 
   const login = () => {
     axios
@@ -25,35 +26,72 @@ function LoginPage() {
 
   return (
     <div className="registerContainer">
-      <div className="CreateDiaryAccSection">
-        <h1>dear diary...</h1>
-        <p>login to dear diary</p>
-      </div>
-      <div className="registrationSection">
-        <div className="intro">
-          <h1>login details</h1>
-          <p>
-            don't have an account?<Link to="/"> register</Link>
-          </p>
-        </div>
-        <div className="form">
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={(e) => setUserLogIn(e.target.value)}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={(e) => setPasswordLogIn(e.target.value)}
-          />
-          <button type="submit" onClick={login}>
-            login
-          </button>
-        </div>
-      </div>
+      {token ? (
+        <>
+          <div className="CreateDiaryAccSection">
+            <h1>dear diary...</h1>
+            <p>login to dear diary</p>
+          </div>
+          <div className="registrationSection">
+            <div className="intro">
+              <h1>login details</h1>
+              <p>
+                don't have an account?<Link to="/"> register</Link>
+              </p>
+            </div>
+            <div className="form">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                onChange={(e) => setUserLogIn(e.target.value)}
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={(e) => setPasswordLogIn(e.target.value)}
+              />
+              <button type="submit" onClick={login}>
+                login
+              </button>
+              <button onClick={() => navigate("/home")}>Back to Diary</button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="CreateDiaryAccSection">
+            <h1>dear diary...</h1>
+            <p>login to dear diary</p>
+          </div>
+          <div className="registrationSection">
+            <div className="intro">
+              <h1>login details</h1>
+              <p>
+                don't have an account?<Link to="/"> register</Link>
+              </p>
+            </div>
+            <div className="form">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                onChange={(e) => setUserLogIn(e.target.value)}
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={(e) => setPasswordLogIn(e.target.value)}
+              />
+              <button type="submit" onClick={login}>
+                login
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
